@@ -3,11 +3,10 @@ import 'source-map-support/register';
 import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 
 import { middyfy } from '../../libs/lambda';
-import {getAllUsersSchema} from './schema';
 
 import userService from '../../services/user.service';
 
-const getAllUsers: ValidatedEventAPIGatewayProxyEvent<typeof getAllUsersSchema> = async () => {
+const getAllUsers: ValidatedEventAPIGatewayProxyEvent<unknown> = async () => {
   const users = userService.getAll();
 
   const response = {

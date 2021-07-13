@@ -3,7 +3,7 @@ import { handlerPath } from '@libs/handlerResolver';
 import { postCourseSchema } from './schema';
 
 export const getAllCourses = {
-  handler: `${handlerPath(__dirname)}/getCoursesHandler.main`,
+  handler: `${handlerPath(__dirname)}/getAllCoursesHandler.main`,
   events: [
     {
       http: {
