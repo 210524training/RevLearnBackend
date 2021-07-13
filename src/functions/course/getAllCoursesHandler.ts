@@ -3,11 +3,10 @@ import 'source-map-support/register';
 import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 
 import { middyfy } from '../../libs/lambda';
-import { getCourseSchema } from './schema';
 
 import courseService from '../../services/course.service';
 
-const getCoursesHandler: ValidatedEventAPIGatewayProxyEvent<typeof getCourseSchema> = async () => {
+const getCoursesHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async () => {
   const courses = courseService.getAll();
 
   const response = {

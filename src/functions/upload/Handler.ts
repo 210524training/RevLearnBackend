@@ -10,8 +10,6 @@ import { middyfy } from '../../libs/lambda';
 import schema from './Schema';
 
 /* const BUCKETNAME: string = 'revlearnbackend-dev-serverlessdeploymentbucket-1imwbwu2cp9ej';
-const IAM_USER_KEY: string = 'AKIAVNCJ6EQEYAOALCO2';
-const IAM_USER_SECRET: string = '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';
 
 const s3bucket = new AWS.S3({
   accessKeyId: IAM_USER_KEY,

@@ -3,7 +3,7 @@ import type { AWS } from '@serverless/typescript';
 
 import hello from '@functions/hello';
 import Upload from '@functions/upload';
-import { getAllCourses, postCourse } from '@functions/course';
+import { getAllCourses, getCourseByID, postCourse } from '@functions/course';
 import { postUser, getAllUsers } from '@functions/user';
 
 const serverlessConfiguration: AWS = {
@@ -20,7 +20,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
-    profile: 'RevLearnB',
+    profile: process.env.AWS_PROFILE,
     region: 'us-west-2',
     apiGateway: {
       minimumCompressionSize: 1024,
@@ -33,7 +33,7 @@ const serverlessConfiguration: AWS = {
   },
   // import the function via paths
   functions: {
-    hello, Upload, getAllCourses, postCourse, postUser, getAllUsers,
+    hello, Upload, getAllCourses, postCourse, postUser, getAllUsers, getCourseByID,
   },
 };
 

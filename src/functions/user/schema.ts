@@ -1,8 +1,4 @@
-export const getAllUsersSchema = {
-  type: 'object',
-  properties: {},
-};
-
+// eslint-disable-next-line import/prefer-default-export
 export const postUserSchema = {
   type: 'object',
   properties: {
