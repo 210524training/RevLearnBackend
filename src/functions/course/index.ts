@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import { handlerPath } from '@libs/handlerResolver';
-import schema from './schema';
+import { getCourseSchema, postCourseSchema } from './schema';
 
-export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+export const getAllCourses = {
+  handler: `${handlerPath(__dirname)}/getCoursesHandler.main`,
   events: [
     {
       http: {
@@ -11,7 +11,7 @@ export default {
         path: 'course',
         request: {
           schema: {
-            'application/json': schema,
+            'application/json': getCourseSchema,
           },
         },
       },
@@ -19,4 +19,19 @@ export default {
   ],
 };
 
-// multipart/form-data
+export const postCourse = {
+  handler: `${handlerPath(__dirname)}/postCourseHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'course',
+        request: {
+          schema: {
+            'application/json': postCourseSchema,
+          },
+        },
+      },
+    },
+  ],
+};

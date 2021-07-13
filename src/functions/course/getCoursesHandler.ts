@@ -3,11 +3,11 @@ import 'source-map-support/register';
 import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 
 import { middyfy } from '../../libs/lambda';
-import schema from './schema';
+import { getCourseSchema } from './schema';
 
 import courseService from '../../services/course.service';
 
-const course: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async () => {
+const getCoursesHandler: ValidatedEventAPIGatewayProxyEvent<typeof getCourseSchema> = async () => {
   const courses = courseService.getAll();
 
   const response = {
@@ -23,4 +23,4 @@ const course: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async () => {
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const main = middyfy(course);
+export const main = middyfy(getCoursesHandler);

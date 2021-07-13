@@ -1,7 +1,7 @@
+/* eslint-disable class-methods-use-this */
 import Course from '../models/Course';
 
 class CourseService {
-  // eslint-disable-next-line class-methods-use-this
   getAll(): Course[] {
     return [{
       courseID: '1234',
@@ -16,6 +16,11 @@ class CourseService {
       quizzes: [],
       admissionRequests: [],
     }];
+  }
+
+  addCourse(course: Course): boolean {
+    console.log(course);
+    return true;
   }
 }
 
