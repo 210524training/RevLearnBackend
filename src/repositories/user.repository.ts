@@ -1,0 +1,1 @@
+import { documentClient } from 'aws-sdk/client/dynamodb';
