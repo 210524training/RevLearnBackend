@@ -1,18 +1,31 @@
 /* eslint-disable import/no-unresolved */
 import { handlerPath } from '@libs/handlerResolver';
-import { getCourseSchema, postCourseSchema } from './schema';
+import { postCourseSchema } from './schema';
 
 export const getAllCourses = {
-  handler: `${handlerPath(__dirname)}/getCoursesHandler.main`,
+  handler: `${handlerPath(__dirname)}/getAllCoursesHandler.main`,
   events: [
     {
       http: {
         method: 'get',
         path: 'course',
         request: {
-          schema: {
-            'application/json': getCourseSchema,
-          },
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
+export const getCourseByID = {
+  handler: `${handlerPath(__dirname)}/getCourseByIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/{id}',
+        request: {
+          schema: null,
         },
       },
     },

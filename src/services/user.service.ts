@@ -6,7 +6,7 @@ class UserService {
     return [{
       username: 'jon',
       password: '123',
-      courses: [],
+      courses: '',
       role: 'Student',
       userID: '123',
     }];

@@ -1,7 +1,7 @@
 export default class User {
   public username: string;
   public password: string;
-  public courses: [];
+  public courses: string;
   public role: Role = 'Student';
   public userID: string;
 }

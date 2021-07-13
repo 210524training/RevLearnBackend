@@ -1,7 +1,4 @@
-export const getCourseSchema = {
-  type: 'object',
-} as const;
-
+// eslint-disable-next-line import/prefer-default-export
 export const postCourseSchema = {
   type: 'object',
   properties: {

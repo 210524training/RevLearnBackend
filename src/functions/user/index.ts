@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import { handlerPath } from '@libs/handlerResolver';
-import {postUserSchema, getAllUsersSchema} from './schema';
+import { postUserSchema } from './schema';
 
 export const getAllUsers = {
   handler: `${handlerPath(__dirname)}/getAllUsersHandler.main`,
@@ -10,15 +10,12 @@ export const getAllUsers = {
         method: 'get',
         path: 'user',
         request: {
-          schema: {
-            'application/json': getAllUsersSchema,
-          },
+          schema: null,
         },
       },
     },
   ],
 };
-
 
 export const postUser = {
   handler: `${handlerPath(__dirname)}/postUserHandler.main`,

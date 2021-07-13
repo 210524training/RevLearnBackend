@@ -4,22 +4,22 @@ import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 
 import { middyfy } from '../../libs/lambda';
 
-import userService from '../../services/user.service';
+// import courseService from '../../services/course.service';
 
-const getAllUsers: ValidatedEventAPIGatewayProxyEvent<unknown> = async () => {
-  const users = userService.getAll();
+const getCourseByIDHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
+  const id = event.path.split('/').pop();
 
   const response = {
     statusCode: 200,
     headers: {
       'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+      'Access-Control-Allow-Methods': 'GET',
     },
-    body: JSON.stringify(users),
+    body: JSON.stringify(id),
   };
 
   return response;
 };
 
 // eslint-disable-next-line import/prefer-default-export
-export const main = middyfy(getAllUsers);
+export const main = middyfy(getCourseByIDHandler);
