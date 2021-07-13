@@ -1,6 +1,6 @@
 export const getCourseSchema = {
-  type: 'object',
-} as const;
+
+};
 
 export const postCourseSchema = {
   type: 'object',
