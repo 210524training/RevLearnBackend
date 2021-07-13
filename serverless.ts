@@ -4,6 +4,7 @@ import type { AWS } from '@serverless/typescript';
 import hello from '@functions/hello';
 import Upload from '@functions/upload';
 import { getAllCourses, postCourse } from '@functions/course';
+import user from '@functions/user';
 
 const serverlessConfiguration: AWS = {
   service: 'RevLearnBackend',
@@ -32,7 +33,7 @@ const serverlessConfiguration: AWS = {
   },
   // import the function via paths
   functions: {
-    hello, Upload, getAllCourses, postCourse,
+    hello, Upload, getAllCourses, postCourse, user,
   },
 };
 
