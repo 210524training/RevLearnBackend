@@ -4,6 +4,7 @@ import type { AWS } from '@serverless/typescript';
 import hello from '@functions/hello';
 import Upload from '@functions/upload';
 import course from '@functions/course';
+import user from '@functions/user';
 
 const serverlessConfiguration: AWS = {
   service: 'RevLearnBackend',
@@ -31,7 +32,9 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
   },
   // import the function via paths
-  functions: { hello, Upload, course },
+  functions: {
+    hello, Upload, course, user,
+  },
 };
 
 module.exports = serverlessConfiguration;
