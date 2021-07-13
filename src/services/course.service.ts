@@ -1,7 +1,11 @@
 /* eslint-disable class-methods-use-this */
+import courseRepository from '../repositories/course.repository';
 import Course from '../models/Course';
 
 class CourseService {
+  constructor(
+    private repo = courseRepository,
+  ) {}
   getAll(): Course[] {
     return [{
       courseID: '1234',
@@ -18,9 +22,8 @@ class CourseService {
     }];
   }
 
-  addCourse(course: Course): boolean {
-    console.log(course);
-    return true;
+  addCourse(course: Course): Promise<boolean> {
+    return this.repo.postCourse(course);
   }
 }
 

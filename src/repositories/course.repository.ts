@@ -7,4 +7,17 @@ class CourseRepository {
   constructor(
     private docClient = dynamo,
   ) {}
+
+  async postCourse(course: Course): Promise<boolean> {
+    const params: DocumentClient.PutItemInput = {
+      TableName: 'Courses',
+      Item: course,
+    };
+
+    return this.docClient.put(params).promise()
+      .catch((error) => { console.log(error); return false; })
+      .then((result) => { console.log(result); return true; });
+  }
 }
+
+export default new CourseRepository();

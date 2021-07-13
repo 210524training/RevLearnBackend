@@ -20,7 +20,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: 'aws',
     runtime: 'nodejs14.x',
-    profile: 'RevLearnB',
+    profile: process.env.AWS_PROFILE,
     region: 'us-west-2',
     apiGateway: {
       minimumCompressionSize: 1024,
