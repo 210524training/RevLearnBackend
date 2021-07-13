@@ -1,0 +1,6 @@
+{
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": "{\"username\":\"jon\",\"password\": \"123\",\"courses\": [], \"role\": \"Student\", \"userID\": \"123\"}"
+  }
