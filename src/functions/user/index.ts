@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
 import { handlerPath } from '@libs/handlerResolver';
-import schema from './schema';
+import {postUserSchema, getAllUsersSchema} from './schema';
 
-export default {
-  handler: `${handlerPath(__dirname)}/handler.main`,
+export const getAllUsers = {
+  handler: `${handlerPath(__dirname)}/getAllUsersHandler.main`,
   events: [
     {
       http: {
@@ -11,7 +11,7 @@ export default {
         path: 'user',
         request: {
           schema: {
-            'application/json': schema,
+            'application/json': getAllUsersSchema,
           },
         },
       },
@@ -19,4 +19,20 @@ export default {
   ],
 };
 
-// multipart/form-data
+
+export const postUser = {
+  handler: `${handlerPath(__dirname)}/postUserHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'user',
+        request: {
+          schema: {
+            'application/json': postUserSchema,
+          },
+        },
+      },
+    },
+  ],
+};
