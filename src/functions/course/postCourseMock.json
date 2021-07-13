@@ -1,0 +1,6 @@
+{
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"courseID\":\"1234\",\"courseTitle\": \"Calculus\",\"startDate\": \"Jan 1 2021\", \"endDate\": \"May 20 2021\", \"teacher\": \"ProfessorC\", \"passingGrade\": \"C\", \"category\": \"Mathematics\"}"
+}

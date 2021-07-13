@@ -3,9 +3,12 @@ import type { AWS } from '@serverless/typescript';
 
 import hello from '@functions/hello';
 import Upload from '@functions/upload';
+import { getAllCourses, postCourse } from '@functions/course';
+import user from '@functions/user';
 
 const serverlessConfiguration: AWS = {
   service: 'RevLearnBackend',
+  useDotenv: true,
   frameworkVersion: '2',
   custom: {
     webpack: {
@@ -29,7 +32,9 @@ const serverlessConfiguration: AWS = {
     lambdaHashingVersion: '20201221',
   },
   // import the function via paths
-  functions: { hello, Upload },
+  functions: {
+    hello, Upload, getAllCourses, postCourse, user,
+  },
 };
 
 module.exports = serverlessConfiguration;
