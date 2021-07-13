@@ -1,1 +1,5 @@
-https://wtlxcvaysb.execute-api.us-west-2.amazonaws.com/dev/hello
+https://wtlxcvaysb.execute-api.us-west-2.amazonaws.com/dev/
+
+
+/hello
+/update

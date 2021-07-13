@@ -2,7 +2,8 @@
 import 'source-map-support/register';
 
 // import * as AWS from 'aws-sdk';
-import Multipart from 'parse-multipart';
+// import Multipart from 'parse-multipart';
+import Multipart from 'aws-lambda-multipart-parser';
 import type { ValidatedEventAPIGatewayProxyEvent } from '../../libs/apiGateway';
 import { formatJSONResponse } from '../../libs/apiGateway';
 import { middyfy } from '../../libs/lambda';
@@ -38,6 +39,10 @@ const Upload: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) 
     console.log('Body: ', event);
     console.log('Event Body: ', event.body);
 
+    const parsed = Multipart.parse(event, 'false');
+    console.log('Parsed: ', parsed);
+
+    // Multipart.Parse(body, event.headers);
     /* const buff = Buffer.from('c3RhY2thYnVzZS5jb20=', 'base64');
     text = buff.toString('ascii');
     console.log('Text', text); */
