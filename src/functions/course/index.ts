@@ -64,6 +64,21 @@ export const getCoursesByStudentID = {
   ],
 };
 
+export const getCoursesByTeacherID = {
+  handler: `${handlerPath(__dirname)}/getCoursesByTeacherIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/teacher/{id}',
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
 export const updateCourse = {
   handler: `${handlerPath(__dirname)}/updateCourseHandler.main`,
   events: [

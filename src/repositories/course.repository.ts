@@ -95,6 +95,23 @@ class CourseRepository {
       .then((result) => { console.log(result); return result.Items as Course[]; });
   }
 
+  async getTeacherCourses(userID: string): Promise<Course[]> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :c',
+      FilterExpression: 'teacher = :userID',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacher, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ExpressionAttributeValues: {
+        ':c': 'course',
+        ':userID': userID,
+      },
+    };
+
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as Course[]; });
+  }
+
   async updateCourse(course: Course): Promise<boolean> {
     const params: DocumentClient.UpdateItemInput = {
       TableName: 'RevLearn',

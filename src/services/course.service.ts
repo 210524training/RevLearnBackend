@@ -23,6 +23,10 @@ class CourseService {
     return this.repo.getStudentCourses(userID);
   }
 
+  getTeacherCourses(userID: string): Promise<Course[]> {
+    return this.repo.getTeacherCourses(userID);
+  }
+
   updateCourse(course: Course): Promise<boolean> {
     return this.repo.updateCourse(course);
   }
