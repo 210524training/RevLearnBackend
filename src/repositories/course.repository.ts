@@ -78,7 +78,7 @@ class CourseRepository {
       });
   }
 
-  async getUserCourses(userID: string): Promise<Course[]> {
+  async getStudentCourses(userID: string): Promise<Course[]> {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',

@@ -49,13 +49,13 @@ export const getCourseByID = {
   ],
 };
 
-export const getCoursesByUserID = {
-  handler: `${handlerPath(__dirname)}/getCoursesByUserIDHandler.main`,
+export const getCoursesByStudentID = {
+  handler: `${handlerPath(__dirname)}/getCoursesByStudentIDHandler.main`,
   events: [
     {
       http: {
         method: 'get',
-        path: 'course/user/{id}',
+        path: 'course/student/{id}',
         request: {
           schema: null,
         },
