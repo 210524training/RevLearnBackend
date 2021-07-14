@@ -79,14 +79,18 @@ class CourseRepository {
   }
 
   async getUserCourses(userID: string): Promise<Course[]> {
-    const params: DocumentClient.ScanInput = {
-      TableName: 'Courses',
-      FilterExpression: ':userID IN students',
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :c',
+      FilterExpression: 'contains(students, :userID)',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacher, passingGrade, students, category, assignments, quizzes, admissionRequests',
       ExpressionAttributeValues: {
+        ':c': 'course',
         ':userID': userID,
       },
     };
-    return this.docClient.scan(params).promise()
+
+    return this.docClient.query(params).promise()
       .catch((error) => { console.log(error); return []; })
       .then((result) => { console.log(result); return result.Items as Course[]; });
   }
