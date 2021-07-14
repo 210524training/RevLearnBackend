@@ -7,7 +7,7 @@ import { middyfy } from '../../libs/lambda';
 import courseService from '../../services/course.service';
 
 const getCoursesHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async () => {
-  const courses = courseService.getAll();
+  const courses = await courseService.getAll();
 
   const response = {
     statusCode: 200,

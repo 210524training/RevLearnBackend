@@ -14,7 +14,7 @@ import User from './User';
  * @property quizzes: string[]
  */
 export default class Course {
-  public courseID: string;
+  public id: string;
   public courseTitle: string;
   public startDate: Date;
   public endDate: Date;

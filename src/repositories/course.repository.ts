@@ -9,6 +9,7 @@ class CourseRepository {
 
   async postCourse(course: Course): Promise<boolean> {
     const {
+      id,
       courseTitle,
       startDate,
       endDate,
@@ -24,7 +25,7 @@ class CourseRepository {
       TableName: 'RevLearn',
       Item: {
         modelType: 'course',
-        id: course.courseID,
+        id,
         courseTitle,
         startDate,
         endDate,
@@ -41,6 +42,21 @@ class CourseRepository {
     return this.docClient.put(params).promise()
       .catch((error) => { console.log(error); return false; })
       .then((result) => { console.log(result); return true; });
+  }
+
+  async getAllCourses(): Promise<Course[]> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :c',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacher, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ExpressionAttributeValues: {
+        ':c': 'course',
+      },
+    };
+
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as Course[]; });
   }
 
   async getUserCourses(userID: string): Promise<Course[]> {
