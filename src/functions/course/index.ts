@@ -9,36 +9,7 @@ export const getAllCourses = {
       http: {
         method: 'get',
         path: 'course',
-        request: {
-          schema: null,
-        },
-      },
-    },
-  ],
-};
-
-export const getCourseByID = {
-  handler: `${handlerPath(__dirname)}/getCourseByIDHandler.main`,
-  events: [
-    {
-      http: {
-        method: 'get',
-        path: 'course/{id}',
-        request: {
-          schema: null,
-        },
-      },
-    },
-  ],
-};
-
-export const getCoursesByUserID = {
-  handler: `${handlerPath(__dirname)}/getCoursesByUserIDHandler.main`,
-  events: [
-    {
-      http: {
-        method: 'get',
-        path: 'course/user/{id}',
+        cors: true,
         request: {
           schema: null,
         },
@@ -54,10 +25,93 @@ export const postCourse = {
       http: {
         method: 'post',
         path: 'course',
+        cors: true,
         request: {
           schema: {
             'application/json': postCourseSchema,
           },
+        },
+      },
+    },
+  ],
+};
+
+export const getCourseByID = {
+  handler: `${handlerPath(__dirname)}/getCourseByIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/{id}',
+        cors: true,
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
+export const getCoursesByStudentID = {
+  handler: `${handlerPath(__dirname)}/getCoursesByStudentIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/student/{id}',
+        cors: true,
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
+export const getCoursesByTeacherID = {
+  handler: `${handlerPath(__dirname)}/getCoursesByTeacherIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/teacher/{id}',
+        cors: true,
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
+export const updateCourse = {
+  handler: `${handlerPath(__dirname)}/updateCourseHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'put',
+        path: 'course',
+        cors: true,
+        request: {
+          schema: {
+            'application/json': postCourseSchema,
+          },
+        },
+      },
+    },
+  ],
+};
+
+export const deleteCourse = {
+  handler: `${handlerPath(__dirname)}/deleteCourseHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'delete',
+        path: 'course/{id}',
+        cors: true,
+        request: {
+          schema: null,
         },
       },
     },

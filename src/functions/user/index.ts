@@ -28,6 +28,7 @@ export const postUser = {
           schema: {
             'application/json': postUserSchema,
           },
+          cors: true,
         },
       },
     },

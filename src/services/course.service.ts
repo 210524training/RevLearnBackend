@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import User from '../models/User';
 import courseRepository from '../repositories/course.repository';
 import Course from '../models/Course';
 
@@ -7,16 +6,33 @@ class CourseService {
   constructor(
     private repo = courseRepository,
   ) {}
-  getAll(): Promise<Course[]> {
-    return this.repo.getAllCourses();
-  }
 
   addCourse(course: Course): Promise<boolean> {
     return this.repo.postCourse(course);
   }
 
-  getUserCourses(userID: string): Promise<Course[]> {
-    return this.repo.getUserCourses(userID);
+  getAll(): Promise<Course[]> {
+    return this.repo.getAllCourses();
+  }
+
+  getCourseByID(id: string): Promise<Course> {
+    return this.repo.getCourseByID(id);
+  }
+
+  getStudentCourses(userID: string): Promise<Course[]> {
+    return this.repo.getStudentCourses(userID);
+  }
+
+  getTeacherCourses(userID: string): Promise<Course[]> {
+    return this.repo.getTeacherCourses(userID);
+  }
+
+  updateCourse(course: Course): Promise<boolean> {
+    return this.repo.updateCourse(course);
+  }
+
+  deleteCourse(courseID: string): Promise<boolean> {
+    return this.repo.deleteCourse(courseID);
   }
 }
 

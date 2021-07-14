@@ -10,8 +10,7 @@ const getCoursesByUserIDHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = a
   const userID = event.path.split('/').pop();
   console.log(userID);
 
-  const courses = await courseService.getUserCourses(userID);
-  console.log('about to return: ', courses);
+  const courses = await courseService.getStudentCourses(userID);
   return formatJSONResponse(courses[0] ? 200 : 204, courses);
 };
 
