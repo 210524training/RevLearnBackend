@@ -9,6 +9,7 @@ export const getAllCourses = {
       http: {
         method: 'get',
         path: 'course',
+        cors: true,
         request: {
           schema: null,
         },
@@ -24,6 +25,7 @@ export const postCourse = {
       http: {
         method: 'post',
         path: 'course',
+        cors: true,
         request: {
           schema: {
             'application/json': postCourseSchema,
@@ -41,6 +43,7 @@ export const getCourseByID = {
       http: {
         method: 'get',
         path: 'course/{id}',
+        cors: true,
         request: {
           schema: null,
         },
@@ -56,6 +59,7 @@ export const getCoursesByStudentID = {
       http: {
         method: 'get',
         path: 'course/student/{id}',
+        cors: true,
         request: {
           schema: null,
         },
@@ -71,6 +75,7 @@ export const getCoursesByTeacherID = {
       http: {
         method: 'get',
         path: 'course/teacher/{id}',
+        cors: true,
         request: {
           schema: null,
         },
@@ -86,6 +91,7 @@ export const updateCourse = {
       http: {
         method: 'put',
         path: 'course',
+        cors: true,
         request: {
           schema: {
             'application/json': postCourseSchema,
@@ -103,6 +109,7 @@ export const deleteCourse = {
       http: {
         method: 'delete',
         path: 'course/{id}',
+        cors: true,
         request: {
           schema: null,
         },
