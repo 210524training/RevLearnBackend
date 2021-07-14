@@ -7,12 +7,16 @@ class CourseService {
     private repo = courseRepository,
   ) {}
 
+  addCourse(course: Course): Promise<boolean> {
+    return this.repo.postCourse(course);
+  }
+
   getAll(): Promise<Course[]> {
     return this.repo.getAllCourses();
   }
 
-  addCourse(course: Course): Promise<boolean> {
-    return this.repo.postCourse(course);
+  getCourseByID(id: string): Promise<Course> {
+    return this.repo.getCourseByID(id);
   }
 
   getUserCourses(userID: string): Promise<Course[]> {

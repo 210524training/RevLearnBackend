@@ -59,6 +59,25 @@ class CourseRepository {
       .then((result) => { console.log(result); return result.Items as Course[]; });
   }
 
+  async getCourseByID(id: string): Promise<Course> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :c AND id = :id',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacher, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ExpressionAttributeValues: {
+        ':c': 'course',
+        ':id': id,
+      },
+    };
+
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => {
+        console.log(result);
+        return result.Items[0] as Course || null;
+      });
+  }
+
   async getUserCourses(userID: string): Promise<Course[]> {
     const params: DocumentClient.ScanInput = {
       TableName: 'Courses',
