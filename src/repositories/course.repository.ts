@@ -23,7 +23,7 @@ class CourseRepository {
   async getUserCourses(userID: string): Promise<Course[]> {
     const params: DocumentClient.ScanInput = {
       TableName: 'Courses',
-      FilterExpression: ':userID IN students',
+      FilterExpression: 'contains(students, :userID)',
       ExpressionAttributeValues: {
         ':userID': userID,
       },

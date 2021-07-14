@@ -8,8 +8,10 @@ import courseService from '../../services/course.service';
 
 const getCoursesByUserIDHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
   const userID = event.path.split('/').pop();
+  console.log(userID);
 
-  const courses = courseService.getUserCourses(userID);
+  const courses = await courseService.getUserCourses(userID);
+  console.log('about to return: ', courses);
   return formatJSONResponse(courses[0] ? 200 : 204, courses);
 };
 

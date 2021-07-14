@@ -1,3 +1,4 @@
+import { Activity } from './Activity';
 import User from './User';
 
 /**
@@ -22,7 +23,6 @@ export default class Course {
   public passingGrade: string;
   public students: string[];
   public category: string;
-  public assignments: string[];
-  public quizzes: string[];
+  public activities: Activity[];
   public admissionRequests?: User[];
 }
