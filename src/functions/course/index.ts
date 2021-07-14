@@ -17,6 +17,23 @@ export const getAllCourses = {
   ],
 };
 
+export const postCourse = {
+  handler: `${handlerPath(__dirname)}/postCourseHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'course',
+        request: {
+          schema: {
+            'application/json': postCourseSchema,
+          },
+        },
+      },
+    },
+  ],
+};
+
 export const getCourseByID = {
   handler: `${handlerPath(__dirname)}/getCourseByIDHandler.main`,
   events: [
@@ -47,12 +64,12 @@ export const getCoursesByUserID = {
   ],
 };
 
-export const postCourse = {
-  handler: `${handlerPath(__dirname)}/postCourseHandler.main`,
+export const updateCourse = {
+  handler: `${handlerPath(__dirname)}/updateCourseHandler.main`,
   events: [
     {
       http: {
-        method: 'post',
+        method: 'put',
         path: 'course',
         request: {
           schema: {

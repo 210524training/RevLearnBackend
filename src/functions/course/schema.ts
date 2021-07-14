@@ -2,7 +2,7 @@
 export const postCourseSchema = {
   type: 'object',
   properties: {
-    courseID: { type: 'string' },
+    id: { type: 'string' },
     courseTitle: { type: 'string' },
     startDate: { type: 'string' },
     endDate: { type: 'string' },
@@ -20,7 +20,7 @@ export const postCourseSchema = {
     admissionRequests: { type: 'string' },
   },
   required: [
-    'courseID',
+    'id',
     'courseTitle',
     'startDate',
     'endDate',

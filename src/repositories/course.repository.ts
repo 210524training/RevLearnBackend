@@ -90,6 +90,34 @@ class CourseRepository {
       .catch((error) => { console.log(error); return []; })
       .then((result) => { console.log(result); return result.Items as Course[]; });
   }
+
+  async updateCourse(course: Course): Promise<boolean> {
+    const params: DocumentClient.UpdateItemInput = {
+      TableName: 'RevLearn',
+      Key: {
+        modelType: 'course',
+        id: course.id,
+      },
+      UpdateExpression: 'SET courseTitle = :ct, startDate = :sd, endDate = :ed, teacher = :t, passingGrade = :pg, students = :s, category = :c, assignments = :a, quizzes = :q, admissionRequests = :ar',
+      ExpressionAttributeValues: {
+        ':ct': course.courseTitle,
+        ':sd': course.startDate,
+        ':ed': course.endDate,
+        ':t': course.teacher,
+        ':pg': course.passingGrade,
+        ':c': course.category,
+        ':s': course.students || [],
+        ':a': course.assignments || [],
+        ':q': course.quizzes || [],
+        ':ar': course.admissionRequests || [],
+      },
+      ReturnValues: 'ALL_NEW',
+    };
+
+    return this.docClient.update(params).promise()
+      .catch((error) => { console.log(error); return false; })
+      .then((result) => { console.log(result); return true; });
+  }
 }
 
 export default new CourseRepository();

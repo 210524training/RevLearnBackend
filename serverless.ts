@@ -4,7 +4,7 @@
 import type { AWS } from '@serverless/typescript';
 import hello from '@functions/hello';
 import Upload from '@functions/upload';
-import { getAllCourses, getCourseByID, postCourse, getCoursesByUserID } from '@functions/course';
+import { postCourse, getAllCourses, getCourseByID, getCoursesByUserID, updateCourse } from '@functions/course';
 import { postUser, getAllUsers } from '@functions/user';
 
 const serverlessConfiguration: AWS = {
@@ -34,7 +34,7 @@ const serverlessConfiguration: AWS = {
   },
   // import the function via paths
   functions: {
-    hello, Upload, getAllCourses, postCourse, postUser, getAllUsers, getCourseByID, getCoursesByUserID,
+    hello, Upload, getAllCourses, postCourse, postUser, getAllUsers, getCourseByID, getCoursesByUserID, updateCourse,
   },
 };
 

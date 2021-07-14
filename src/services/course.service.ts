@@ -22,6 +22,10 @@ class CourseService {
   getUserCourses(userID: string): Promise<Course[]> {
     return this.repo.getUserCourses(userID);
   }
+
+  updateCourse(course: Course): Promise<boolean> {
+    return this.repo.updateCourse(course);
+  }
 }
 
 export default new CourseService();
