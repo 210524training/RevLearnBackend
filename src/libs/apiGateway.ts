@@ -9,6 +9,9 @@ export const formatJSONResponse = (statusCode: number, body: any) => ({
   statusCode,
   headers: {
     'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'OPTIONS,POST,GET',
+    'Access-Control-Allow-Headers': 'Content-Type',
+
   },
   body: JSON.stringify(body),
 });
