@@ -19,7 +19,7 @@ export default class Course {
   public courseTitle: string;
   public startDate: Date;
   public endDate: Date;
-  public teacher: string;
+  public teacherID: string;
   public passingGrade: string;
   public students: string[];
   public category: string;

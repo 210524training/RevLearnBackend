@@ -10,6 +10,7 @@ import courseService from '../../services/course.service';
 
 const postCoursesHandler: ValidatedEventAPIGatewayProxyEvent<typeof postCourseSchema> = async (event) => {
   const course: Course = event.body as Course;
+  console.log(course);
 
   const result: boolean = await courseService.addCourse(course);
 

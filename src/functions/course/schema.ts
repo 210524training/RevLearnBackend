@@ -6,7 +6,7 @@ export const postCourseSchema = {
     courseTitle: { type: 'string' },
     startDate: { type: 'string' },
     endDate: { type: 'string' },
-    teacher: { type: 'string' },
+    teacherID: { type: 'string' },
     passingGrade: { type: 'string' },
     students: {
       type: 'array',
@@ -31,7 +31,7 @@ export const postCourseSchema = {
     'courseTitle',
     'startDate',
     'endDate',
-    'teacher',
+    'teacherID',
     'passingGrade',
     'category',
   ],

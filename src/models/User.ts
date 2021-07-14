@@ -3,7 +3,7 @@ export default class User {
   public password: string;
   public courses: string;
   public role: Role = 'Student';
-  public userID: string;
+  public id: string;
 }
 
 export type Role = 'Student' | 'Teacher' | 'Admin';

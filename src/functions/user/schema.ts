@@ -6,13 +6,13 @@ export const postUserSchema = {
     password: { type: 'string' },
     courses: { type: 'string' },
     role: { type: 'string' },
-    userID: { type: 'string' },
+    id: { type: 'string' },
 
   },
   required: [
     'username',
     'password',
     'role',
-    'userID',
+    'id',
   ],
 };
