@@ -18,6 +18,19 @@ class CourseRepository {
       .catch((error) => { console.log(error); return false; })
       .then((result) => { console.log(result); return true; });
   }
+
+  async getUserCourses(userID: string): Promise<Course[]> {
+    const params: DocumentClient.ScanInput = {
+      TableName: 'Courses',
+      FilterExpression: ':userID IN students',
+      ExpressionAttributeValues: {
+        ':userID': userID,
+      },
+    };
+    return this.docClient.scan(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as Course[]; });
+  }
 }
 
 export default new CourseRepository();

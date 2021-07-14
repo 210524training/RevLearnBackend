@@ -32,6 +32,21 @@ export const getCourseByID = {
   ],
 };
 
+export const getCoursesByUserID = {
+  handler: `${handlerPath(__dirname)}/getCoursesByUserIDHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'course/user/{id}',
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
 export const postCourse = {
   handler: `${handlerPath(__dirname)}/postCourseHandler.main`,
   events: [

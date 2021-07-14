@@ -1,4 +1,5 @@
 /* eslint-disable class-methods-use-this */
+import User from '../models/User';
 import courseRepository from '../repositories/course.repository';
 import Course from '../models/Course';
 
@@ -24,6 +25,10 @@ class CourseService {
 
   addCourse(course: Course): Promise<boolean> {
     return this.repo.postCourse(course);
+  }
+
+  getUserCourses(userID: string): Promise<Course[]> {
+    return this.repo.getUserCourses(userID);
   }
 }
 

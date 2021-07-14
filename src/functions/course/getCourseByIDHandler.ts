@@ -8,17 +8,7 @@ import { middyfy } from '../../libs/lambda';
 
 const getCourseByIDHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async (event) => {
   const id = event.path.split('/').pop();
-
-  const response = {
-    statusCode: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET',
-    },
-    body: JSON.stringify(id),
-  };
-
-  return response;
+  
 };
 
 // eslint-disable-next-line import/prefer-default-export
