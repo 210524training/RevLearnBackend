@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import dynamo from '../dynamodb/dynamodb';
 import Course from '../models/Course';
@@ -29,6 +30,16 @@ class CourseRepository {
     };
     return this.docClient.scan(params).promise()
       .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as Course[]; });
+  }
+
+  async getAllCourses() {
+    const params: DocumentClient.ScanInput = {
+      TableName: 'Courses',
+    };
+
+    return this.docClient.scan(params).promise()
+      .catch((err) => { console.log(err); return []; })
       .then((result) => { console.log(result); return result.Items as Course[]; });
   }
 }
