@@ -26,6 +26,10 @@ class CourseService {
   updateCourse(course: Course): Promise<boolean> {
     return this.repo.updateCourse(course);
   }
+
+  deleteCourse(courseID: string): Promise<boolean> {
+    return this.repo.deleteCourse(courseID);
+  }
 }
 
 export default new CourseService();

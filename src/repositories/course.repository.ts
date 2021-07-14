@@ -122,6 +122,20 @@ class CourseRepository {
       .catch((error) => { console.log(error); return false; })
       .then((result) => { console.log(result); return true; });
   }
+
+  async deleteCourse(id: string): Promise<boolean> {
+    const params: DocumentClient.DeleteItemInput = {
+      TableName: 'RevLearn',
+      Key: {
+        modelType: 'course',
+        id,
+      },
+    };
+
+    return this.docClient.delete(params).promise()
+      .catch((error) => { console.log(error); return false; })
+      .then((result) => { console.log(result); return true; });
+  }
 }
 
 export default new CourseRepository();

@@ -80,3 +80,18 @@ export const updateCourse = {
     },
   ],
 };
+
+export const deleteCourse = {
+  handler: `${handlerPath(__dirname)}/deleteCourseHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'delete',
+        path: 'course/{id}',
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
