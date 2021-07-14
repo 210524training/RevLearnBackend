@@ -8,7 +8,12 @@ export const postCourseSchema = {
     endDate: { type: 'string' },
     teacher: { type: 'string' },
     passingGrade: { type: 'string' },
-    students: { type: 'string' },
+    students: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+    },
     category: { type: 'string' },
     assignments: { type: 'string' },
     quizzes: { type: 'string' },

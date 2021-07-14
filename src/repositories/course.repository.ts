@@ -1,7 +1,6 @@
 import { DocumentClient } from 'aws-sdk/clients/dynamodb';
 import dynamo from '../dynamodb/dynamodb';
 import Course from '../models/Course';
-import User from '../models/User';
 
 class CourseRepository {
   constructor(
@@ -9,9 +8,34 @@ class CourseRepository {
   ) {}
 
   async postCourse(course: Course): Promise<boolean> {
+    const {
+      courseTitle,
+      startDate,
+      endDate,
+      teacher,
+      passingGrade,
+      students, category,
+      assignments,
+      quizzes,
+      admissionRequests,
+    } = course;
+
     const params: DocumentClient.PutItemInput = {
-      TableName: 'Courses',
-      Item: course,
+      TableName: 'RevLearn',
+      Item: {
+        modelType: 'course',
+        id: course.courseID,
+        courseTitle,
+        startDate,
+        endDate,
+        teacher,
+        passingGrade,
+        students,
+        category,
+        assignments,
+        quizzes,
+        admissionRequests,
+      },
     };
 
     return this.docClient.put(params).promise()
