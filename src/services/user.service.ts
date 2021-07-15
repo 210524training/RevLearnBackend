@@ -7,18 +7,12 @@ class UserService {
   private repo = UserRepository,
   ) {}
 
-  getAll(): User[] {
-    return [{
-      username: 'jon',
-      password: '123',
-      courses: '',
-      role: 'Student',
-      id: '123',
-    }];
+  addUser(user: User):Promise<boolean> {
+    return this.repo.postUser(user);
   }
 
-  postUser(user: User):Promise<boolean> {
-    return this.repo.postUser(user);
+  getAll(): Promise<User[]> {
+    return this.repo.getAllUsers();
   }
 }
 
