@@ -10,7 +10,7 @@ import userService from '../../services/user.service';
 const postUsersHandler: ValidatedEventAPIGatewayProxyEvent<typeof postUserSchema> = async (event) => {
   const user: User = event.body as User;
 
-  const result: boolean = await userService.postUser(user);
+  const result: boolean = await userService.addUser(user);
 
   return formatJSONResponse(result ? 201 : 500, result);
 };
