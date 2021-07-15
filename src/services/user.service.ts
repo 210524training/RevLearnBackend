@@ -17,8 +17,8 @@ class UserService {
     }];
   }
 
-  addUser(user: User):Promise<boolean> {
-    return this.repo.addUser(user);
+  postUser(user: User):Promise<boolean> {
+    return this.repo.postUser(user);
   }
 }
 
