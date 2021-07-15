@@ -17,5 +17,15 @@ class UserRepository {
       .catch((error) => { console.log(error); return false; })
       .then((result) => { console.log(result); return true; });
   }
+
+  async getAllUsers(){
+
+  }
+
+  async getUserByID(){}
+
+
+  async deleteUser(){}
+
 }
 export default new UserRepository();
