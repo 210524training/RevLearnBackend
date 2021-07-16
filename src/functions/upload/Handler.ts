@@ -37,8 +37,13 @@ const Upload: ValidatedEventAPIGatewayProxyEvent<typeof schema> = async (event) 
     console.log('Body: ', event);
     console.log('Event Body: ', event.body);
 
-    const parsed = Multipart.parse(event, 'false');
+    const parsed = Multipart.parse(event, true);
     console.log('Parsed: ', parsed);
+    console.log('File Type: ', parsed.file.type);
+    console.log('File Name: ', parsed.file.filename);
+    console.log('Content Type: ', parsed.file.contentType);
+    console.log('Content: ', parsed.file.content);
+    console.log('field: ', parsed.file.field);
 
     // Multipart.Parse(body, event.headers);
     /* const buff = Buffer.from('c3RhY2thYnVzZS5jb20=', 'base64');
