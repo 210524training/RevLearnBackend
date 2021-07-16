@@ -35,7 +35,10 @@ class UserRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :u',
-      ProjectionExpression: 'username, password, role, id',
+      ExpressionAttributeNames: {
+        '#r': 'role',
+      },
+      ProjectionExpression: 'username, password, #r, id',
       ExpressionAttributeValues: {
         ':u': 'user',
       },
@@ -50,7 +53,10 @@ class UserRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :u AND id = :id',
-      ProjectionExpression: 'id, password, role, username',
+      ExpressionAttributeNames: {
+        '#r': 'role',
+      },
+      ProjectionExpression: 'id, password, #r, username',
       ExpressionAttributeValues: {
         ':u': 'user',
         ':id': id,
