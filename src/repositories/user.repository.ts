@@ -11,7 +11,6 @@ class UserRepository {
     const {
       username,
       password,
-      courses,
       role,
       id,
     } = user;
@@ -22,7 +21,6 @@ class UserRepository {
         modelType: 'user',
         username,
         password,
-        courses,
         role,
         id,
       },
