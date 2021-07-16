@@ -30,7 +30,6 @@ export const postUser = {
           schema: {
             'application/json': postUserSchema,
           },
-          cors: true,
         },
       },
     },
@@ -44,11 +43,9 @@ export const deleteUser = {
       http: {
         method: 'delete',
         path: 'user/{id}',
+        cors: true,
         request: {
-          schema: {
-            'application/json': null,
-          },
-          cors: true,
+          schema: null,
         },
       },
     },
@@ -62,11 +59,9 @@ export const getUserByID = {
       http: {
         method: 'get',
         path: 'user/{id}',
+        cors: true,
         request: {
-          schema: {
-            'application/json': null,
-          },
-          cors: true,
+          schema: null,
         },
       },
     },
