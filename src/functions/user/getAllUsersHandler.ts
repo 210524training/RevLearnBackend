@@ -7,7 +7,7 @@ import { middyfy } from '../../libs/lambda';
 import userService from '../../services/user.service';
 
 const getAllUsersHandler: ValidatedEventAPIGatewayProxyEvent<unknown> = async () => {
-  const users = userService.getAll();
+  const users = await userService.getAll();
 
   return formatJSONResponse(users[0] ? 200 : 204, users);
 };
