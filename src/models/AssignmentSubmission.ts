@@ -1,5 +1,5 @@
 import { LetterGrade } from '../types/MyTypes';
-import { Submission } from './Subission';
+import { Submission } from './Submission';
 
 /**
  * Represents the data of an assignment

@@ -9,6 +9,7 @@ export const getAllUsers = {
       http: {
         method: 'get',
         path: 'user',
+        cors: true,
         request: {
           schema: null,
         },
@@ -24,6 +25,7 @@ export const postUser = {
       http: {
         method: 'post',
         path: 'user',
+        cors: true,
         request: {
           schema: {
             'application/json': postUserSchema,
