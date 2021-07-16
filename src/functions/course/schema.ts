@@ -18,12 +18,7 @@ export const postCourseSchema = {
     assignments: { type: 'string' },
     activities: {
       type: 'array',
-      items: {
-        type: 'array',
-        contains: {
-          type: 'string',
-        },
-      },
+
     },
   },
   required: [

@@ -7,10 +7,25 @@ class UserRepository {
     private docClient = dynamo,
   ) {}
 
-  async addUser(user: User): Promise<boolean> {
+  async postUser(user: User): Promise<boolean> {
+    const {
+      username,
+      password,
+      courses,
+      role,
+      id,
+    } = user;
+
     const params: DocumentClient.PutItemInput = {
-      TableName: 'RL_Users',
-      Item: user,
+      TableName: 'RevLearn',
+      Item: {
+        modelType: 'user',
+        username,
+        password,
+        courses,
+        role,
+        id,
+      },
     };
 
     return this.docClient.put(params).promise()
@@ -18,8 +33,19 @@ class UserRepository {
       .then((result) => { console.log(result); return true; });
   }
 
-  async getAllUsers() {
+  async getAllUsers(): Promise<User[]> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :u',
+      ProjectionExpression: 'username, password, courses, role, id',
+      ExpressionAttributeValues: {
+        ':u': 'user',
+      },
+    };
 
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as User[]; });
   }
 
   async getUserByID(id: string): Promise<User> {

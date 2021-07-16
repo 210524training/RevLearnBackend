@@ -83,7 +83,7 @@ class CourseRepository {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
       FilterExpression: 'contains(students, :id)',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':id': userID,
@@ -100,7 +100,7 @@ class CourseRepository {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
       FilterExpression: 'teacherID = :userID',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':userID': userID,
