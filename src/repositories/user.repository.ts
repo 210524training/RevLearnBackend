@@ -18,14 +18,39 @@ class UserRepository {
       .then((result) => { console.log(result); return true; });
   }
 
-  async getAllUsers(){
+  async getAllUsers() {
 
   }
 
-  async getUserByID(){}
+  async getUserByID(id: string): Promise<User> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :u AND id = :id',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests',
+      ExpressionAttributeValues: {
+        ':u': 'user',
+        ':id': id,
+      },
+    };
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => {
+        console.log(result);
+        return result.Items as User;
+      });
+  }
 
-
-  async deleteUser(){}
-
+  async deleteUser(id: string): Promise<boolean> {
+    const params: DocumentClient.DeleteItemInput = {
+      TableName: 'RevLearn',
+      Key: {
+        modelType: 'user',
+        id,
+      },
+    };
+    return this.docClient.delete(params).promise()
+      .catch((error) => { console.log(error); return false; })
+      .then((result) => { console.log(result); return true; });
+  }
 }
 export default new UserRepository();
