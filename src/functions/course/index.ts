@@ -122,8 +122,8 @@ export const gradeDueAssignments = {
   handler: `${handlerPath(__dirname)}/gradeDueAssignmentsHandler.main`,
   events: [
     {
-      schedule: { 
-        name: 'Auto-Grade Due Assignments',
+      schedule: {
+        name: 'gradeDueAssignments',
         description: 'For each course, assign a grade to ungraded submissions for an assignment past its due date',
         rate: 'rate(1 day)',
       },
