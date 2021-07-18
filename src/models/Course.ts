@@ -24,5 +24,5 @@ export default class Course {
   public students: string[];
   public category: string;
   public activities: Activity[];
-  public admissionRequests?: User[];
+  public admissionRequests?: string[];
 }

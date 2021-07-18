@@ -20,6 +20,12 @@ export const postCourseSchema = {
       type: 'array',
 
     },
+    admissionRequests: {
+      type: 'array',
+      items: {
+        type: 'string',
+      },
+    },
   },
   required: [
     'id',
