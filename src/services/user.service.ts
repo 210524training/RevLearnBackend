@@ -14,6 +14,11 @@ class UserService {
   getAll(): Promise<User[]> {
     return this.repo.getAllUsers();
   }
+
+  getAllTeachers(): Promise<User[]> {
+    return this.repo.getAllTeachers();
+  }
+
   getUserByID(id: string) {
     return this.repo.getUserByID(id);
   }

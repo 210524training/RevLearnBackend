@@ -18,6 +18,22 @@ export const getAllUsers = {
   ],
 };
 
+export const getAllTeachers = {
+  handler: `${handlerPath(__dirname)}/getAllTeachersHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'get',
+        path: 'user/teacher',
+        cors: true,
+        request: {
+          schema: null,
+        },
+      },
+    },
+  ],
+};
+
 export const postUser = {
   handler: `${handlerPath(__dirname)}/postUserHandler.main`,
   events: [

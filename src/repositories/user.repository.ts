@@ -49,6 +49,26 @@ class UserRepository {
       .then((result) => { console.log(result); return result.Items as User[]; });
   }
 
+  async getAllTeachers(): Promise<User[]> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :u',
+      ExpressionAttributeNames: {
+        '#r': 'role',
+      },
+      FilterExpression: '#r = :t',
+      ProjectionExpression: 'username, password, #r, id',
+      ExpressionAttributeValues: {
+        ':u': 'user',
+        ':t': 'Teacher',
+      },
+    };
+
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => { console.log(result); return result.Items as User[]; });
+  }
+
   async getUserByID(id: string): Promise<User> {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
