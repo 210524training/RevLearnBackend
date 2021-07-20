@@ -66,7 +66,7 @@ class UserRepository {
       .catch((error) => { console.log(error); return []; })
       .then((result) => {
         console.log(result);
-        return result.Items as User;
+        return result.Items[0] as User;
       });
   }
 
