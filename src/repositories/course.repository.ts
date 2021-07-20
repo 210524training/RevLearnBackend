@@ -9,8 +9,8 @@ class CourseRepository {
   ) {}
 
   async postCourse(course: Course): Promise<boolean> {
-    const {
-      id,
+    // const {
+    /* id,
       courseTitle,
       startDate,
       endDate,
@@ -20,22 +20,13 @@ class CourseRepository {
       category,
       activities,
       admissionRequests,
-    } = course;
+    } = course; */
 
     const params: DocumentClient.PutItemInput = {
       TableName: 'RevLearn',
       Item: {
         modelType: 'course',
-        id,
-        courseTitle,
-        startDate,
-        endDate,
-        teacherID,
-        passingGrade,
-        students,
-        category,
-        activities,
-        admissionRequests,
+        ...course,
       },
     };
 
@@ -48,7 +39,7 @@ class CourseRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
       },
@@ -63,7 +54,7 @@ class CourseRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c AND id = :id',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':id': id,
@@ -83,7 +74,7 @@ class CourseRepository {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
       FilterExpression: 'contains(students, :id)',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':id': userID,
@@ -100,7 +91,7 @@ class CourseRepository {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
       FilterExpression: 'teacherID = :userID',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, quizzes, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':userID': userID,
@@ -119,7 +110,7 @@ class CourseRepository {
         modelType: 'course',
         id: course.id,
       },
-      UpdateExpression: 'SET courseTitle = :ct, startDate = :sd, endDate = :ed, teacherID = :t, passingGrade = :pg, students = :s, category = :c, activities = :a, admissionRequests = :ar',
+      UpdateExpression: 'SET courseTitle = :ct, startDate = :sd, endDate = :ed, teacherID = :t, passingGrade = :pg, students = :s, category = :c, activites = :a, admissionRequests = :ar, resources = :re',
       ExpressionAttributeValues: {
         ':ct': course.courseTitle,
         ':sd': course.startDate,
@@ -130,6 +121,7 @@ class CourseRepository {
         ':s': course.students || [],
         ':a': course.activities || [],
         ':ar': course.admissionRequests || [],
+        ':re': course.resources || [],
       },
       ReturnValues: 'ALL_NEW',
     };

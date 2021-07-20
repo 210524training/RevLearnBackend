@@ -1,4 +1,5 @@
 import { Activity } from './Activity';
+import { Attachment } from './Attachment';
 import User from './User';
 
 /**
@@ -24,5 +25,6 @@ export default class Course {
   public students: string[];
   public category: string;
   public activities: Activity[];
-  public admissionRequests?: string[];
+  public admissionRequests?: User[];
+  public resources: Attachment[]
 }

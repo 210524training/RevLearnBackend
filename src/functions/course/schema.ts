@@ -26,6 +26,7 @@ export const postCourseSchema = {
         type: 'string',
       },
     },
+    resources: { type: 'array' },
   },
   required: [
     'id',
