@@ -90,6 +90,29 @@ class UserRepository {
       });
   }
 
+  async getUserByUsername(username: string): Promise<User> {
+    const params: DocumentClient.QueryInput = {
+      TableName: 'RevLearn',
+      KeyConditionExpression: 'modelType = :u',
+      ExpressionAttributeNames: {
+        '#r': 'role',
+        '#user': 'username',
+      },
+      FilterExpression: '#user = :user',
+      ProjectionExpression: 'id, password, #r, username',
+      ExpressionAttributeValues: {
+        ':u': 'user',
+        ':user': username,
+      },
+    };
+    return this.docClient.query(params).promise()
+      .catch((error) => { console.log(error); return []; })
+      .then((result) => {
+        console.log(result);
+        return result.Items[0] as User;
+      });
+  }
+
   async deleteUser(id: string): Promise<boolean> {
     const params: DocumentClient.DeleteItemInput = {
       TableName: 'RevLearn',

@@ -26,6 +26,16 @@ class UserService {
   deleteUser(id: string) {
     return this.repo.deleteUser(id);
   }
+
+  async login(username: string, password: string): Promise<User | null> {
+    const user = await this.repo.getUserByUsername(username);
+
+    if(user && user.username === username && user.password === password) {
+      return user;
+    } else {
+      return null;
+    }
+  }
 }
 
 export default new UserService();

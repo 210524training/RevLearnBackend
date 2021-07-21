@@ -1,6 +1,24 @@
 /* eslint-disable import/no-unresolved */
 import { handlerPath } from '@libs/handlerResolver';
-import { postUserSchema } from './schema';
+import { postUserSchema, loginSchema } from './schema';
+
+export const login = {
+  handler: `${handlerPath(__dirname)}/loginHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'post',
+        path: 'login',
+        cors: true,
+        request: {
+          schema: {
+            'application/json': loginSchema,
+          },
+        },
+      },
+    },
+  ],
+};
 
 export const getAllUsers = {
   handler: `${handlerPath(__dirname)}/getAllUsersHandler.main`,
