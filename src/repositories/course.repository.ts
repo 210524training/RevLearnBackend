@@ -110,7 +110,7 @@ class CourseRepository {
         modelType: 'course',
         id: course.id,
       },
-      UpdateExpression: 'SET courseTitle = :ct, startDate = :sd, endDate = :ed, teacherID = :t, passingGrade = :pg, students = :s, category = :c, activites = :a, admissionRequests = :ar, resources = :re',
+      UpdateExpression: 'SET courseTitle = :ct, startDate = :sd, endDate = :ed, teacherID = :t, passingGrade = :pg, students = :s, category = :c, activities = :a, admissionRequests = :ar, resources = :re',
       ExpressionAttributeValues: {
         ':ct': course.courseTitle,
         ':sd': course.startDate,
