@@ -30,7 +30,7 @@ class CourseRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests, resources',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
       },
@@ -45,7 +45,7 @@ class CourseRepository {
     const params: DocumentClient.QueryInput = {
       TableName: 'RevLearn',
       KeyConditionExpression: 'modelType = :c AND id = :id',
-      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, assignments, quizzes, admissionRequests, resources',
+      ProjectionExpression: 'id, courseTitle, startDate, endDate, teacherID, passingGrade, students, category, activities, admissionRequests, resources',
       ExpressionAttributeValues: {
         ':c': 'course',
         ':id': id,
