@@ -9,23 +9,14 @@ class CourseRepository {
   ) {}
 
   async postCourse(course: Course): Promise<boolean> {
-    // const {
-    /* id,
-      courseTitle,
-      startDate,
-      endDate,
-      teacherID,
-      passingGrade,
-      students,
-      category,
-      activities,
-      admissionRequests,
-    } = course; */
-
     const params: DocumentClient.PutItemInput = {
       TableName: 'RevLearn',
       Item: {
         modelType: 'course',
+        ':s': course.students || [],
+        ':a': course.activities || [],
+        ':ar': course.admissionRequests || [],
+        ':re': course.resources || [],
         ...course,
       },
     };
