@@ -23,6 +23,10 @@ class UserService {
     return this.repo.getUserByID(id);
   }
 
+  updateUser(user: User) {
+    return this.repo.updateUser(user);
+  }
+
   deleteUser(id: string) {
     return this.repo.deleteUser(id);
   }

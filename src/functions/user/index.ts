@@ -70,6 +70,24 @@ export const postUser = {
   ],
 };
 
+export const updateUser = {
+  handler: `${handlerPath(__dirname)}/updateUserHandler.main`,
+  events: [
+    {
+      http: {
+        method: 'put',
+        path: 'user',
+        cors: true,
+        request: {
+          schema: {
+            'application/json': postUserSchema,
+          },
+        },
+      },
+    },
+  ],
+};
+
 export const deleteUser = {
   handler: `${handlerPath(__dirname)}/deleteUserHandler.main`,
   events: [

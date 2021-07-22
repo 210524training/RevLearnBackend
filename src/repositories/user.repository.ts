@@ -113,6 +113,30 @@ class UserRepository {
       });
   }
 
+  async updateUser(user: User): Promise<boolean> {
+    const params: DocumentClient.UpdateItemInput = {
+      TableName: 'RevLearn',
+      Key: {
+        modelType: 'user',
+        id: user.id,
+      },
+      UpdateExpression: 'SET password = :p, #r = :r, username = :u',
+      ExpressionAttributeNames: {
+        '#r': 'role',
+      },
+      ExpressionAttributeValues: {
+        ':p': user.password,
+        ':r': user.role,
+        ':u': user.username,
+      },
+      ReturnValues: 'ALL_NEW',
+    };
+
+    return this.docClient.update(params).promise()
+      .catch((error) => { console.log(error); return false; })
+      .then((result) => { console.log(result); return true; });
+  }
+
   async deleteUser(id: string): Promise<boolean> {
     const params: DocumentClient.DeleteItemInput = {
       TableName: 'RevLearn',
@@ -126,4 +150,5 @@ class UserRepository {
       .then((result) => { console.log(result); return true; });
   }
 }
+
 export default new UserRepository();
