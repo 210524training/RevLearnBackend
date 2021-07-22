@@ -13,10 +13,10 @@ class CourseRepository {
       TableName: 'RevLearn',
       Item: {
         modelType: 'course',
-        ':s': course.students || [],
-        ':a': course.activities || [],
-        ':ar': course.admissionRequests || [],
-        ':re': course.resources || [],
+        students: course.students || [],
+        activities: course.activities || [],
+        admissionRequests: course.admissionRequests || [],
+        resources: course.resources || [],
         ...course,
       },
     };
